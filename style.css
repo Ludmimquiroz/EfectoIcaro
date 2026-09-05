@@ -797,4 +797,63 @@ footer {
         bottom: 15px;
         padding: 10px 14px;
     }
+
+    /* Ultimo agregado */
+    /* Configuración Base para la Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('tu-imagen.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* En escritorio anclamos la imagen al centro-derecha */
+    background-position: right center; 
+  }
+  
+  /* Capa de contraste (Overlay) para que el texto HTML sea legible */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente oscuro desde la izquierda hacia la derecha */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2; /* Asegura que el texto HTML quede sobre el overlay */
+    color: #ffffff;
+    max-width: 600px;
+    padding: 2rem;
+  }
+  
+  /* ==========================================
+     AJUSTE ESPECÍFICO PARA MÓVILES (Media Query)
+     ========================================== */
+  @media (max-width: 768px) {
+    .hero {
+      /* Forzamos a que el anclaje sea a la DERECHA para mantener visible al personaje */
+      background-position: 85% center; 
+      align-items: flex-start; /* Subimos el texto para que no tape al personaje */
+      padding-top: 4rem;
+    }
+  
+    .hero::before {
+      /* En celular el gradiente debe ser de ARRIBA hacia ABAJO */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 40%, rgba(0, 0, 0, 0.2) 100%);
+    }
+  
+    .hero-content {
+      max-width: 100%;
+      text-align: center;
+      padding: 1.5rem;
+    }
+  }
 }
